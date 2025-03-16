@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title || "سایت" %></title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<header>
+    <nav>
+        <ul>
+            <% if (typeof user !== 'undefined' && user) { %>
+                <% if (user.isAdmin) { %>
+                    <li><a href="/admin">داشبورد ادمین</a></li>
+                <% } else { %>
+                    <li><a href="/user">پنل کاربری</a></li>
+                <% } %>
+                <li><a href="/auth/logout">خروج</a></li>
+            <% } else { %>
+                <li><a href="/auth/login">ورود</a></li>
+                <li><a href="/auth/register">ثبت نام</a></li>
+            <% } %>
+        </ul>
+    </nav>
+</header>
+<main>

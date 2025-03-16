@@ -1,0 +1,54 @@
+<div class="container">
+    <h2>ثبت نام</h2>
+    <% if(error) { %>
+        <p class="error"><%= error %></p>
+    <% } %>
+    <form action="/auth/register" method="POST">
+        <label for="firstName">نام:</label>
+        <input type="text" id="firstName" name="firstName" required>
+        
+        <label for="lastName">نام خانوادگی:</label>
+        <input type="text" id="lastName" name="lastName" required>
+        
+        <label for="nationalCode">کد ملی:</label>
+        <input type="text" id="nationalCode" name="nationalCode" placeholder="0123456789" required>
+        
+        <label for="phone">شماره موبایل:</label>
+        <input type="text" id="phone" name="phone" placeholder="09123456789" required>
+        
+        <label for="password">رمز عبور:</label>
+        <div class="input-group">
+            <input type="password" id="password" name="password" required>
+            <span class="toggle-password" onclick="togglePassword('password')">
+                <i class="icon ion-md-eye"></i>
+            </span>
+        </div>
+        
+        <label for="confirmPassword">تکرار رمز عبور:</label>
+        <div class="input-group">
+            <input type="password" id="confirmPassword" name="confirmPassword" required>
+            <span class="toggle-password" onclick="togglePassword('confirmPassword')">
+                <i class="icon ion-md-eye"></i>
+            </span>
+        </div>
+        
+        <button type="submit">ثبت نام</button>
+    </form>
+    <p>قبلاً ثبت نام کرده‌اید؟ <a href="/auth/login">ورود</a></p>
+</div>
+
+<script>
+function togglePassword(fieldId) {
+    const field = document.getElementById(fieldId);
+    const icon = field.nextElementSibling.querySelector('i');
+    if (field.type === "password") {
+        field.type = "text";
+        icon.classList.remove("ion-md-eye");
+        icon.classList.add("ion-md-eye-off");
+    } else {
+        field.type = "password";
+        icon.classList.remove("ion-md-eye-off");
+        icon.classList.add("ion-md-eye");
+    }
+}
+</script>

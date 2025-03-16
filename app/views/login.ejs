@@ -1,0 +1,37 @@
+<div class="container">
+    <h2>ورود</h2>
+    <% if(error) { %>
+        <p class="error"><%= error %></p>
+    <% } %>
+    <form action="/auth/login" method="POST">
+        <label for="nationalCode">کد ملی:</label>
+        <input type="text" id="nationalCode" name="nationalCode" placeholder="0123456789" required>
+        
+        <label for="password">رمز عبور:</label>
+        <div class="input-group">
+            <input type="password" id="password" name="password" required>
+            <span class="toggle-password" onclick="togglePassword('password')">
+                <i class="icon ion-md-eye"></i>
+            </span>
+        </div>
+        
+        <button type="submit">ورود</button>
+    </form>
+    <p>هنوز ثبت نام نکرده‌اید؟ <a href="/auth/register">ثبت نام</a></p>
+</div>
+
+<script>
+function togglePassword(fieldId) {
+    const field = document.getElementById(fieldId);
+    const icon = field.nextElementSibling.querySelector('i');
+    if (field.type === "password") {
+        field.type = "text";
+        icon.classList.remove("ion-md-eye");
+        icon.classList.add("ion-md-eye-off");
+    } else {
+        field.type = "password";
+        icon.classList.remove("ion-md-eye-off");
+        icon.classList.add("ion-md-eye");
+    }
+}
+</script>
